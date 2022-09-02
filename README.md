@@ -23,11 +23,18 @@ For the project, you will need:
    cdktf help
    ```
 
-## Deploy resources
+## Understand the code organization and the stack to be deployed
 
-* This project creates [one resource group](./main.py) as a proof of concept.
-* It was initialized with the command `cdktf init --template=python --local`.
-* It is [pre-configured](./cdktf.json) to use the IBM Cloud provider for Terraform 1.44 and later. The provider was added with the command `cdktf provider add "IBM-Cloud/ibm@~> 1.44"`.
+The stack to be deployed is made of:
+* one input variable `basename` -- a prefix to name the resources that will be created.
+* one resource group that will be named after this variable.
+* one output variable containing the id of the resource group that was created.
+
+The code for this stack is found in [main.py](./main.py). It was initialized with the command `cdktf init --template=python --local`.
+
+The IBM Cloud provider was added with the command `cdktf provider add "IBM-Cloud/ibm@~> 1.44"`. This command modified the [CDK configuration file (cdktf.json)](./cdktf.json). 
+
+## Deploy the stack
 
 1. Retrieve the IBM Cloud provider and generate **python** constructs in the output directory `imports`:
 
@@ -53,7 +60,9 @@ For the project, you will need:
    cdktf deploy
    ```
 
-## Destroy the resources
+   Notice the `group_id` in the list of outputs.
+
+## Destroy the stack
 
 1. Destroy the stack
 
