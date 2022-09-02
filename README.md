@@ -10,7 +10,7 @@ For CDK for Terraform, you will need:
 
 For the project, you will need:
 * Python v3.7
-* pipenv v2021.5.29 (pip install --user pipenv)
+* pipenv v2021.5.29 with `pip install --user pipenv`
 
 ## Install CDK for Terraform
 
